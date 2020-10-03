@@ -19,21 +19,18 @@ class PreferenceBusiness {
         });
 
         body.notification_url = this.NOTIFICATION_URL;
-        // preference.back_urls.success = 'https://www.google.com/success';
-        // preference.back_urls.pending = 'https://www.google.com/pending';
-        // preference.back_urls.failure = 'https://www.google.com/failure';
-
         body['back_urls'] = {
             success: 'https://www.google.com/success',
             pending: 'https://www.google.com/pending',
             failure: 'https://www.google.com/failure'
         }
 
-        const resultMercadoPago = await mercadopago.preferences.create(body);
-        if (!resultMercadoPago) return null;
-        const bodyPreferenceStr = JSON.stringify(resultMercadoPago.body);
-        await this._preferenceRepository.create({ json: bodyPreferenceStr });
-        return resultMercadoPago;
+        const preferenceMercadoPago = await mercadopago.preferences.create(body);
+        if (!preferenceMercadoPago) return null;
+        const bodyPreferenceStr = JSON.stringify(preferenceMercadoPago.body);
+        const preferenceToSave = { id_mercadopago: preferenceMercadoPago.body.id, json: bodyPreferenceStr };
+        await this._preferenceRepository.create(preferenceToSave);
+        return preferenceMercadoPago;
 
     }
 

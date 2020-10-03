@@ -14,8 +14,8 @@ class OrderBusiness {
     }
 
     async create(order) {
-        const createdEntity = await this._orderRepository.create(order);
-        return createdEntity;
+        const createdOrder = await this._orderRepository.create(order);
+        return createdOrder;
     }
 
     async searchByFilter(filter) {

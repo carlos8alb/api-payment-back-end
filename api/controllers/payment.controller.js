@@ -21,19 +21,6 @@ class PaymentController {
         }
     }
 
-    async getPayments(req, res) {
-        try {
-            let payments = await this._paymentService.getAll();
-            return res.status(200).json({
-                success: true,
-                data: payments
-            })
-        } catch (error) {
-            errorHandle(res, error);
-        }
-
-    }
-
     async getPayment(req, res) {
         try {
             const { id } = req.params;
@@ -51,6 +38,21 @@ class PaymentController {
         } catch (error) {
             errorHandle(res, error);
         }
+    }
+
+    async getPayments(req, res) {
+        try {
+            let { limit, offset } = req.query;
+            let params = { limit, offset };
+            let payments = await this._paymentService.getAll(params);
+            return res.status(200).json({
+                success: true,
+                data: payments
+            })
+        } catch (error) {
+            errorHandle(res, error);
+        }
+
     }
 
 }

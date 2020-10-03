@@ -1,6 +1,8 @@
 class NotificationBusiness {
-    constructor({ NotificationRepository }) {
+    constructor({ NotificationRepository, PaymentRepository, PaymentBusiness }) {
         this._notificationRepository = NotificationRepository;
+        this._paymentRepository = PaymentRepository;
+        this._paymentBusiness = PaymentBusiness;
     }
 
     async create(notification) {
@@ -13,6 +15,14 @@ class NotificationBusiness {
             json: notification
         }
         const createdNotification = await this._notificationRepository.create(notificationToSave);
+        if (notificationJson.type === 'payment') {
+            const payment = await this._paymentBusiness.get(notificationJson.data.id);
+            const paymentToSave = {
+                id_mercadopago: notificationJson.data.id,
+                json: JSON.stringify(payment)
+            }
+            const createdPayment = await this._paymentRepository.create(paymentToSave);
+        }
         return createdNotification;
     }
 

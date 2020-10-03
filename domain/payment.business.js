@@ -1,7 +1,11 @@
+const axios = require('axios').default;
+
 class PaymentBusiness {
 
-    constructor({ PaymentRepository }) {
+    constructor({ PaymentRepository, config }) {
         this._paymentRepository = PaymentRepository;
+        this._config = config;
+        this.ACCESS_TOKEN = this._config.MERCADO_PAGO.ACCESS_TOKEN;
     }
 
     async create(payment) {
@@ -9,15 +13,26 @@ class PaymentBusiness {
         return createdPayment;
     }
 
-    async getAll() {
-        const payments = await this._paymentRepository.getAll();
-        return payments;
+    async get(id) {
+        const payment = await axios.get(`https://api.mercadopago.com/v1/payments/${ id }`, {
+            params: {
+                access_token: this.ACCESS_TOKEN
+            }
+        });
+        if (!payment) return null;
+        return payment.data;
     }
 
-    async get(id) {
-        const payment = await this._paymentRepository.get(id);
-        if (!payment) return null;
-        return payment;
+    async getAll(params) {
+        const payments = await axios.get(`https://api.mercadopago.com/v1/payments/search`, {
+            params: {
+                access_token: this.ACCESS_TOKEN,
+                limit: params.limit || 0,
+                offset: params.offset || 0
+            }
+        });
+        if (!payments) return null;
+        return payments.data;
     }
 
     async searchByFilter(filter) {

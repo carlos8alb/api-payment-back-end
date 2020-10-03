@@ -13,6 +13,9 @@ module.exports = (sequelize, DataTypes) => {
         }
     };
     Payment.init({
+        id_mercadopago: {
+            type: DataTypes.TEXT
+        },
         json: {
             type: DataTypes.TEXT
         }

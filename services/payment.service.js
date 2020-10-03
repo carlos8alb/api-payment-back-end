@@ -14,8 +14,8 @@ class PaymentService {
         return payment;
     }
 
-    async getAll() {
-        const payments = await this._paymentBusiness.getAll();
+    async getAll(params) {
+        const payments = await this._paymentBusiness.getAll(params);
         return payments;
     }
 
