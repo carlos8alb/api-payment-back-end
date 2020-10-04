@@ -4,11 +4,6 @@ class OrderService {
         this._orderBusiness = OrderBusiness;
     }
 
-    async getAll() {
-        const orders = await this._orderBusiness.getAll();
-        return orders;
-    }
-
     async create(order) {
         const createdOrder = await this._orderBusiness.create(order);
         return createdOrder;
@@ -17,6 +12,11 @@ class OrderService {
     async get(id) {
         const order = await this._orderBusiness.get(id);
         return order;
+    }
+
+    async getAll(params) {
+        const orders = await this._orderBusiness.getAll(params);
+        return orders;
     }
 
 }

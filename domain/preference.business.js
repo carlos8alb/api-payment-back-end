@@ -48,7 +48,7 @@ class PreferenceBusiness {
         const preferences = await axios.get(`https://api.mercadopago.com/checkout/preferences/search`, {
             params: {
                 access_token: this.ACCESS_TOKEN,
-                limit: params.limit || 0,
+                limit: params.limit || 10,
                 offset: params.offset || 0
             }
         });

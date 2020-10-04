@@ -6,7 +6,7 @@ function errorHandle(res, error) {
 
     // console.log(error);
 
-    let errorMessage = error || 'Ocurrió un error. Intente nuevamente';
+    let errorMessage = 'Ocurrió un error. Intente nuevamente';
     if (typeof error.errors !== 'undefined') {
         errorMessage = error.errors.map((error) => { return { 'field': error.path, 'message': error.message } })
     }

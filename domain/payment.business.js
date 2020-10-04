@@ -27,7 +27,7 @@ class PaymentBusiness {
         const payments = await axios.get(`https://api.mercadopago.com/v1/payments/search`, {
             params: {
                 access_token: this.ACCESS_TOKEN,
-                limit: params.limit || 0,
+                limit: params.limit || 10,
                 offset: params.offset || 0
             }
         });

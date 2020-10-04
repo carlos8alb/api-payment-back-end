@@ -6,7 +6,6 @@ class PaymentController {
     }
 
     async createPayment(req, res) {
-
         try {
 
             const payment = await this._paymentService.create({ json: JSON.stringify(body) });
