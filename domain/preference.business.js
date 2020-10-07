@@ -27,9 +27,14 @@ class PreferenceBusiness {
 
         const preferenceMercadoPago = await mercadopago.preferences.create(body);
         if (!preferenceMercadoPago) return null;
-        const bodyPreferenceStr = JSON.stringify(preferenceMercadoPago.body);
-        const preferenceToSave = { id_mercadopago: preferenceMercadoPago.body.id, json: bodyPreferenceStr };
+        const preferenceToSave = preferenceMercadoPago.body;
+        preferenceToSave.json = JSON.stringify(preferenceToSave);
         await this._preferenceRepository.create(preferenceToSave);
+
+        // const bodyPreferenceStr = JSON.stringify(preferenceMercadoPago.body);
+        // const preferenceToSave = { id_mercadopago: preferenceMercadoPago.body.id, json: bodyPreferenceStr };
+        // await this._preferenceRepository.create(preferenceToSave);
+
         return preferenceMercadoPago;
 
     }

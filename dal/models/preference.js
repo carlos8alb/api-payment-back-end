@@ -13,8 +13,12 @@ module.exports = (sequelize, DataTypes) => {
         }
     };
     Preference.init({
-        id: { type: DataTypes.UUID, primaryKey: true },
-        json: { type: DataTypes.TEXT },
+        id: {
+            type: DataTypes.STRING(256),
+            primaryKey: true,
+            allowNull: false,
+            defaultValue: ''
+        },
         additional_info: { type: DataTypes.TEXT },
         auto_return: { type: DataTypes.TEXT },
         binary_mode: { type: DataTypes.BOOLEAN },
@@ -31,15 +35,16 @@ module.exports = (sequelize, DataTypes) => {
         init_point: { type: DataTypes.TEXT },
         internal_metadata: { type: DataTypes.TEXT },
         marketplace: { type: DataTypes.TEXT },
-        marketplace_fee: { type: DataTypes.INTEGER },
+        marketplace_fee: { type: DataTypes.FLOAT },
         notification_url: { type: DataTypes.TEXT },
         operation_type: { type: DataTypes.TEXT },
         processing_modes: { type: DataTypes.TEXT },
         product_id: { type: DataTypes.TEXT },
         sandbox_init_point: { type: DataTypes.TEXT },
         site_id: { type: DataTypes.TEXT },
-        total_amount: { type: DataTypes.TEXT },
-        last_updated: { type: DataTypes.TEXT }
+        total_amount: { type: DataTypes.FLOAT },
+        last_updated: { type: DataTypes.TEXT },
+        json: { type: DataTypes.TEXT }
     }, {
         sequelize,
         modelName: 'Preference',
