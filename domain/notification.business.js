@@ -11,11 +11,9 @@ class NotificationBusiness {
 
         const notificationJson = JSON.parse(notification);
 
-        const notificationToSave = {
-            topic: notificationJson.topic,
-            type: notificationJson.type,
-            json: notification
-        }
+        const notificationToSave = notificationJson;
+        notificationToSave.json = notification;
+
         const createdNotification = await this._notificationRepository.create(notificationToSave);
 
         if (notificationJson.type === 'payment') {
