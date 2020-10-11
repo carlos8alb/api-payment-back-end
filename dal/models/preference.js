@@ -44,6 +44,69 @@ module.exports = (sequelize, DataTypes) => {
         site_id: { type: DataTypes.TEXT },
         total_amount: { type: DataTypes.FLOAT },
         last_updated: { type: DataTypes.TEXT },
+        back_urls: {
+            type: DataTypes.TEXT,
+            get: function() {
+                return JSON.parse(this.getDataValue('back_urls'));
+            },
+            set: function(value) {
+                return this.setDataValue('back_urls', JSON.stringify(value));
+            }
+        },
+        items: {
+            type: DataTypes.TEXT,
+            get: function() {
+                return JSON.parse(this.getDataValue('items'));
+            },
+            set: function(value) {
+                return this.setDataValue('items', JSON.stringify(value));
+            }
+        },
+        payer: {
+            type: DataTypes.TEXT,
+            get: function() {
+                return JSON.parse(this.getDataValue('payer'));
+            },
+            set: function(value) {
+                return this.setDataValue('payer', JSON.stringify(value));
+            }
+        },
+        payment_methods: {
+            type: DataTypes.TEXT,
+            get: function() {
+                return JSON.parse(this.getDataValue('payment_methods'));
+            },
+            set: function(value) {
+                return this.setDataValue('payment_methods', JSON.stringify(value));
+            }
+        },
+        redirect_urls: {
+            type: DataTypes.TEXT,
+            get: function() {
+                return JSON.parse(this.getDataValue('redirect_urls'));
+            },
+            set: function(value) {
+                return this.setDataValue('redirect_urls', JSON.stringify(value));
+            }
+        },
+        shipments: {
+            type: DataTypes.TEXT,
+            get: function() {
+                return JSON.parse(this.getDataValue('shipments'));
+            },
+            set: function(value) {
+                return this.setDataValue('shipments', JSON.stringify(value));
+            }
+        },
+        differential_pricing: {
+            type: DataTypes.TEXT,
+            get: function() {
+                return JSON.parse(this.getDataValue('differential_pricing'));
+            },
+            set: function(value) {
+                return this.setDataValue('differential_pricing', JSON.stringify(value));
+            }
+        },
         json: { type: DataTypes.TEXT }
     }, {
         sequelize,

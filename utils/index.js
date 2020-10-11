@@ -4,7 +4,7 @@ function removeWhitespace(str) {
 
 function errorHandle(res, error) {
 
-    console.log(error);
+    // console.log(error);
 
     let errorMessage = 'Ocurrió un error. Intente nuevamente';
     if (typeof error.errors !== 'undefined') {
