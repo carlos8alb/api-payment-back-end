@@ -1,6 +1,5 @@
 module.exports = {
     ENV: process.env.NODE_ENV, //production
-    SEED: process.env.SEED_JWT,
     PORT: process.env.PORT,
     DB: {
         username: process.env.USERNAME,
@@ -10,6 +9,7 @@ module.exports = {
         dialect: 'mysql',
         logging: false
     },
+    SEED: process.env.SEED_JWT,
     MERCADO_PAGO: {
         ACCESS_TOKEN: process.env.ACCESS_TOKEN,
         NOTIFICATION_URL: process.env.NOTIFICATION_URL
