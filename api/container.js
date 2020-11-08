@@ -17,6 +17,7 @@ const PaymentRoutes = require('../api/routes/payment.routes');
 const PreferenceRoutes = require('../api/routes/preference.routes');
 const PaymentTypeRoutes = require('../api/routes/payment-type.routes');
 const NotificationRoutes = require('../api/routes/notification.routes');
+const ClientRoutes = require('../api/routes/client.routes');
 
 // business
 const {
@@ -24,7 +25,8 @@ const {
     PaymentBusiness,
     PaymentTypeBusiness,
     PreferenceBusiness,
-    NotificationBusiness
+    NotificationBusiness,
+    ClientBusiness
 } = require('../domain');
 
 // controllers
@@ -33,7 +35,8 @@ const {
     PaymentController,
     PaymentTypeController,
     PreferenceController,
-    NotificationController
+    NotificationController,
+    ClientController
 } = require('../api/controllers');
 
 // services
@@ -42,7 +45,8 @@ const {
     OrderService,
     PreferenceService,
     PaymentTypeService,
-    NotificationService
+    NotificationService,
+    ClientService
 } = require('../services');
 
 // repositories
@@ -51,7 +55,8 @@ const {
     PaymentRepository,
     PaymentTypeRepository,
     PreferenceRepository,
-    NotificationRepository
+    NotificationRepository,
+    ClientRepository
 } = require('../dal/repositories');
 
 // db
@@ -80,35 +85,40 @@ container
         PaymentRoutes: asFunction(PaymentRoutes).singleton(),
         PreferenceRoutes: asFunction(PreferenceRoutes).singleton(),
         PaymentTypeRoutes: asFunction(PaymentTypeRoutes).singleton(),
-        NotificationRoutes: asFunction(NotificationRoutes).singleton()
+        NotificationRoutes: asFunction(NotificationRoutes).singleton(),
+        ClientRoutes: asFunction(ClientRoutes).singleton()
     })
     .register({
         OrderController: asClass(OrderController).singleton(),
         PaymentController: asClass(PaymentController).singleton(),
         PaymentTypeController: asClass(PaymentTypeController).singleton(),
         PreferenceController: asClass(PreferenceController).singleton(),
-        NotificationController: asClass(NotificationController).singleton()
+        NotificationController: asClass(NotificationController).singleton(),
+        ClientController: asClass(ClientController).singleton()
     })
     .register({
         PaymentService: asClass(PaymentService).singleton(),
         OrderService: asClass(OrderService).singleton(),
         PaymentTypeService: asClass(PaymentTypeService).singleton(),
         PreferenceService: asClass(PreferenceService).singleton(),
-        NotificationService: asClass(NotificationService).singleton()
+        NotificationService: asClass(NotificationService).singleton(),
+        ClientService: asClass(ClientService).singleton()
     })
     .register({
         OrderBusiness: asClass(OrderBusiness).singleton(),
         PaymentBusiness: asClass(PaymentBusiness).singleton(),
         PaymentTypeBusiness: asClass(PaymentTypeBusiness).singleton(),
         PreferenceBusiness: asClass(PreferenceBusiness).singleton(),
-        NotificationBusiness: asClass(NotificationBusiness).singleton()
+        NotificationBusiness: asClass(NotificationBusiness).singleton(),
+        ClientBusiness: asClass(ClientBusiness).singleton()
     })
     .register({
         OrderRepository: asClass(OrderRepository).singleton(),
         PaymentRepository: asClass(PaymentRepository).singleton(),
         PaymentTypeRepository: asClass(PaymentTypeRepository).singleton(),
         PreferenceRepository: asClass(PreferenceRepository).singleton(),
-        NotificationRepository: asClass(NotificationRepository).singleton()
+        NotificationRepository: asClass(NotificationRepository).singleton(),
+        ClientRepository: asClass(ClientRepository).singleton()
     });
 
 module.exports = container;

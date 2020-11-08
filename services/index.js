@@ -3,5 +3,6 @@ module.exports = {
     OrderService: require('./order.service'),
     PreferenceService: require('./preference.service'),
     PaymentTypeService: require('./payment-type.service'),
-    NotificationService: require('./notification.service')
+    NotificationService: require('./notification.service'),
+    ClientService: require('./client.service')
 };

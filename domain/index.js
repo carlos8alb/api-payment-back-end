@@ -3,5 +3,6 @@ module.exports = {
     PreferenceBusiness: require('./preference.business'),
     PaymentTypeBusiness: require('./payment-type.business'),
     PaymentBusiness: require('./payment.business'),
-    NotificationBusiness: require('./notification.business')
+    NotificationBusiness: require('./notification.business'),
+    ClientBusiness: require('./client.business')
 };

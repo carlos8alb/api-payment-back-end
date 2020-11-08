@@ -3,5 +3,6 @@ module.exports = {
     PreferenceRepository: require("./preference.repository"),
     PaymentTypeRepository: require("./payment-type.repository"),
     PaymentRepository: require("./payment.repository"),
-    NotificationRepository: require("./notification.repository")
+    NotificationRepository: require("./notification.repository"),
+    ClientRepository: require("./client.repository")
 };

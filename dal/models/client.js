@@ -13,13 +13,27 @@ module.exports = (sequelize, DataTypes) => {
         }
     };
     Client.init({
-        id: {
-            primaryKey: true,
-            type: DataTypes.UUID
+        uuid: {
+            type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV1,
+            unique: { args: true, msg: 'Error al generar id único' }
         },
-        name: { type: DataTypes.STRING },
-        mp_access_token: { type: DataTypes.STRING },
-        mp_notification_url: { type: DataTypes.STRING }
+        name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: { args: true, msg: 'Error al ingresar el nombre del cliente' }
+        },
+        seed_jwt: { type: DataTypes.STRING, allowNull: false },
+        mp_access_token: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: { args: true, msg: 'Error al ingresar el token' }
+        },
+        mp_notification_url: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: { args: true, msg: 'Error al ingresar la url de notificación' }
+        }
     }, {
         sequelize,
         modelName: 'Client',

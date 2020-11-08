@@ -8,7 +8,8 @@ module.exports = function({
     OrderRoutes,
     PreferenceRoutes,
     PaymentTypeRoutes,
-    NotificationRoutes
+    NotificationRoutes,
+    ClientRoutes
 }) {
     const router = Router();
     const apiRoute = Router();
@@ -23,6 +24,7 @@ module.exports = function({
     apiRoute.use('/preference', PreferenceRoutes);
     apiRoute.use('/payment-type', PaymentTypeRoutes);
     apiRoute.use('/notification', NotificationRoutes);
+    apiRoute.use('/client', ClientRoutes);
 
     router.use('/api', apiRoute);
 
