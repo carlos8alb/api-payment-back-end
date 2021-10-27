@@ -4,8 +4,8 @@ class PreferenceBusiness {
     constructor({ PreferenceRepository, config }) {
         this._preferenceRepository = PreferenceRepository;
         this._config = config;
-        this.ACCESS_TOKEN = this._config.MERCADO_PAGO.ACCESS_TOKEN;
-        this.NOTIFICATION_URL = this._config.MERCADO_PAGO.NOTIFICATION_URL;
+        // this.ACCESS_TOKEN = this._config.MERCADO_PAGO.ACCESS_TOKEN;
+        // this.NOTIFICATION_URL = this._config.MERCADO_PAGO.NOTIFICATION_URL;
     }
 
     async create(preference) {

@@ -34,5 +34,13 @@ module.exports = (sequelize, DataTypes) => {
         paymentType.description = removeWhitespace(paymentType.getDataValue('description'));
     });
 
+    PaymentType.associate = function(models) {
+        PaymentType.belongsToMany(models.Client, {
+            through: 'ClientPaymentType',
+            as: 'payment-type',
+            foreignKey: 'payment_type_id'
+        });
+    };
+
     return PaymentType;
 };

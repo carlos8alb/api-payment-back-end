@@ -5,7 +5,7 @@ class PaymentBusiness {
     constructor({ PaymentRepository, config }) {
         this._paymentRepository = PaymentRepository;
         this._config = config;
-        this.ACCESS_TOKEN = this._config.MERCADO_PAGO.ACCESS_TOKEN;
+        // this.ACCESS_TOKEN = this._config.MERCADO_PAGO.ACCESS_TOKEN;
     }
 
     async create(payment) {

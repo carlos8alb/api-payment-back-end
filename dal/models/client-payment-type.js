@@ -2,7 +2,7 @@
 const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-    class Setting extends Model {
+    class ClientPaymentType extends Model {
         /**
          * Helper method for defining associations.
          * This method is not a part of Sequelize lifecycle.
@@ -12,22 +12,27 @@ module.exports = (sequelize, DataTypes) => {
             // define association here
         }
     };
-    Setting.init({
-        key: {
+    ClientPaymentType.init({
+        client_id: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: { args: true, msg: 'Error al ingresar clave' }
+            unique: { args: true, msg: 'Error al ingresar el id del cliente' }
         },
-        value: {
+        payment_type_id: {
             type: DataTypes.STRING,
             allowNull: false,
+            unique: { args: true, msg: 'Error al ingresar el id del tipo de pago' }
         }
     }, {
         sequelize,
-        modelName: 'Setting',
-        tableName: 'settings',
-        timestamps: false
+        modelName: 'ClientPaymentType',
+        tableName: 'clients-payments-type',
+        timestamps: false,
+        indexes: [{
+            unique: true,
+            fields: ['client_id', 'payment_type_id']
+        }]
     });
 
-    return Setting;
+    return ClientPaymentType;
 };

@@ -2,7 +2,7 @@
 const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-    class Setting extends Model {
+    class MercadoPago extends Model {
         /**
          * Helper method for defining associations.
          * This method is not a part of Sequelize lifecycle.
@@ -12,22 +12,28 @@ module.exports = (sequelize, DataTypes) => {
             // define association here
         }
     };
-    Setting.init({
-        key: {
-            type: DataTypes.STRING,
+    MercadoPago.init({
+        client_id: {
+            type: DataTypes.INTEGER,
             allowNull: false,
-            unique: { args: true, msg: 'Error al ingresar clave' }
+            unique: { args: true, msg: 'Error al ingresar el id del cliente' }
         },
-        value: {
+        mp_access_token: {
             type: DataTypes.STRING,
             allowNull: false,
+            unique: { args: true, msg: 'Error al ingresar access token' }
+        },
+        mp_notification_url: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: { args: true, msg: 'Error al ingresar url notificación' }
         }
     }, {
         sequelize,
-        modelName: 'Setting',
-        tableName: 'settings',
+        modelName: 'MercadoPago',
+        tableName: 'mercado-pago',
         timestamps: false
     });
 
-    return Setting;
+    return MercadoPago;
 };

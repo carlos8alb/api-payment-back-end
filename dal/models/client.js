@@ -22,17 +22,6 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false,
             unique: { args: true, msg: 'Error al ingresar el nombre del cliente' }
-        },
-        seed_jwt: { type: DataTypes.STRING, allowNull: false },
-        mp_access_token: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            unique: { args: true, msg: 'Error al ingresar el token' }
-        },
-        mp_notification_url: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            unique: { args: true, msg: 'Error al ingresar la url de notificación' }
         }
     }, {
         sequelize,
@@ -40,6 +29,21 @@ module.exports = (sequelize, DataTypes) => {
         tableName: 'clients',
         timestamps: false
     });
+
+    Client.associate = function(models) {
+
+        Client.belongsToMany(models.PaymentType, {
+            through: 'ClientPaymentType',
+            as: 'client_payment_type',
+            foreignKey: 'client_id'
+        });
+
+        Client.hasOne(models.MercadoPago, {
+            as: 'client_mercado_pago',
+            foreignKey: 'client_id'
+        });
+
+    };
 
     return Client;
 };

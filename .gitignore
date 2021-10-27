@@ -87,3 +87,6 @@ config/environments/qa.js
 
 # DynamoDB Local files
 .dynamodb/
+
+# Access tocken
+access_token.txt
